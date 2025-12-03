@@ -1,0 +1,364 @@
+cars> db.cars.find()
+[
+  {
+    _id: ObjectId("690b896b574f402811d9ed2d"),
+    maker: 'Tata',
+    model: 'Nexon',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Turbocharged', cc: 1199, torque: '170 Nm' },
+    features: [ 'Touchscreen', 'Reverse Camera', 'Bluetooth Connectivity' ],
+    sunroof: false,
+    airbags: 2,
+    color: 'black'
+  },
+  {
+    _id: ObjectId("690b8c32574f402811d9ed2e"),
+    maker: 'Hyundai',
+    model: 'Creta',
+    fuel_type: 'Diesel',
+    transmission: 'Manual',
+    engine: { type: 'Naturally Aspirated', cc: 1493, torque: '250 Nm' },
+    features: [
+      'Sunroof',
+      'Leather Seats',
+      'Wireless Charging',
+      'Ventilated Seats',
+      'Bluetooth',
+      'power-window'
+    ],
+    sunroof: true,
+    airbags: 6,
+    alloy: 'yes',
+    color: 'black'
+  },
+  {
+    _id: ObjectId("690b8c32574f402811d9ed2f"),
+    maker: 'Maruti Suzuki',
+    model: 'Baleno',
+    fuel_type: 'Petrol',
+    transmission: 'Automatic',
+    engine: { type: 'Naturally Aspirated', cc: 1197, torque: '113 Nm' },
+    features: [ 'Projector Headlamps', 'Apple CarPlay', 'ABS' ],
+    sunroof: false,{$and:[{"engine.cc":1197},{features:{$all:["ABS","Apple CarPlay"]}},{color:"black"}]})
+    airbags: 2,
+    color: 'black'
+  },_id: ObjectId("690b8c32574f402811d9ed2f"),
+  { maker: 'Maruti Suzuki',
+    _id: ObjectId("690b8c32574f402811d9ed30"),
+    maker: 'Mahindra',',
+    model: 'XUV500',utomatic',
+    fuel_type: 'Diesel',urally Aspirated', cc: 1197, torque: '113 Nm' },
+    transmission: 'Manual',Headlamps', 'Apple CarPlay', 'ABS' ],
+    engine: { type: 'Turbocharged', cc: 2179, torque: '360 Nm' },
+    features: [
+      'All-Wheel Drive',
+      'Navigation System',
+      'Cruise Control',
+      'power-window'"engine.cc":1197},{features:{$all:["ABS","Apple CarPlay"]}},{color:"black"})
+    ],erverError: Unknown expression $all
+    sunroof: true,({"engine.cc":1197,features:{$all:["ABS","Apple CarPlay"],color:"black"}})
+    airbags: 6,r: unknown operator: color
+    alloy: 'yes',d({"engine.cc":1197,features:{$all:["ABS","Apple CarPlay"]},color:"black"})
+    color: 'black'
+  },
+  { _id: ObjectId("690b8c32574f402811d9ed2f"),
+    _id: ObjectId("690b8c32574f402811d9ed31"),
+    maker: 'Honda',,
+    model: 'City',trol',
+    fuel_type: 'Petrol',atic',
+    transmission: 'Automatic', Aspirated', cc: 1197, torque: '113 Nm' },
+    engine: { type: 'Naturally Aspirated', cc: 1498, torque: '145 Nm' },
+    features: [lse,
+      'Keyless Entry',
+      'Auto AC',k'
+      'Multi-angle Rearview Camera',
+      'sunroof'
+    ],
+    sunroof: false,
+    airbags: 4,
+    color: 'black'
+  }
+]
+
+
+//all queryes here for refernce.. 
+
+//--------------------------------------------
+// 🟢 1️⃣ Insert Operations
+//--------------------------------------------
+
+// 👉 Ek document insert karne ke liye
+db.cars.insertOne({
+  maker: "Tata",
+  model: "Punch",
+  fuel_type: "Petrol",
+  engine: { type: "Naturally Aspirated", cc: 1199 },
+  color: "blue"
+});
+
+// 👉 Multiple documents insert karne ke liye
+db.cars.insertMany([
+  { maker: "Hyundai", model: "i20", fuel_type: "Petrol", color: "white" },
+  { maker: "Mahindra", model: "XUV700", fuel_type: "Diesel", color: "black" }
+]);
+
+//--------------------------------------------
+// 🟡 2️⃣ Read (Find) Operations
+//--------------------------------------------
+
+// 👉 Sabhi documents find karne ke liye
+db.cars.find();
+
+// 👉 Specific condition se document find karne ke liye
+db.cars.find({ maker: "Tata" });
+
+// 👉 Sirf ek document find karne ke liye
+db.cars.findOne({ model: "Nexon" });
+
+// 👉 Specific fields ko show karne ke liye (projection)
+db.cars.find({ maker: "Tata" }, { model: 1, color: 1, _id: 0 });
+
+// 👉 Nested field ke basis par find karne ke liye
+db.cars.find({ "engine.cc": 1199 });
+
+//--------------------------------------------
+// 🔵 3️⃣ Update Operations
+//--------------------------------------------
+
+// 👉 Ek document update karne ke liye
+db.cars.updateOne(
+  { model: "Nexon" },
+  { $set: { color: "white" } }
+);
+
+// 👉 Multiple documents update karne ke liye
+db.cars.updateMany(
+  { maker: "Hyundai" },
+  { $set: { fuel_type: "Petrol" } }
+);
+
+// 👉 Field increment karne ke liye
+db.cars.updateOne(
+  { model: "Creta" },
+  { $inc: { "engine.cc": 10 } }
+);
+
+// 👉 Array me naya feature push karne ke liye
+db.cars.updateOne(
+  { model: "Nexon" },
+  { $push: { features: "Airbags" } }
+);
+
+//--------------------------------------------
+// 🔴 4️⃣ Delete Operations
+//--------------------------------------------
+
+// 👉 Ek document delete karne ke liye
+db.cars.deleteOne({ model: "Baleno" });
+
+// 👉 Multiple documents delete karne ke liye
+db.cars.deleteMany({ color: "black" });
+
+// 👉 Collection ke sabhi documents delete karne ke liye
+db.cars.deleteMany({});
+
+//--------------------------------------------
+// 🟣 5️⃣ Comparison Operators ($gt, $lt, $gte, $lte, $ne)
+//--------------------------------------------
+
+// 👉 engine.cc greater than 1200
+db.cars.find({ "engine.cc": { $gt: 1200 } });
+
+// 👉 engine.cc less than 1500
+db.cars.find({ "engine.cc": { $lt: 1500 } });
+
+// 👉 engine.cc greater than or equal to 1199
+db.cars.find({ "engine.cc": { $gte: 1199 } });
+
+// 👉 engine.cc not equal to 1493
+db.cars.find({ "engine.cc": { $ne: 1493 } });
+
+// 👉 Range ke andar (1199 se bada aur 1400 se chhota)
+db.cars.find({ "engine.cc": { $gt: 1199, $lt: 1400 } });
+
+//--------------------------------------------
+// 🟤 6️⃣ Logical Operators ($and, $or, $not, $nor)
+//--------------------------------------------
+
+// 👉 Multiple conditions ke sath (AND)
+db.cars.find({
+  $and: [{ maker: "Tata" }, { color: "black" }]
+});
+
+// 👉 OR condition (ek bhi match chalega)
+db.cars.find({
+  $or: [{ maker: "Tata" }, { maker: "Hyundai" }]
+});
+
+// 👉 NOT condition (jo match na kare)
+db.cars.find({
+  color: { $not: { $eq: "black" } }
+});
+
+// 👉 NOR condition (dono condition match nahi hone chahiye)
+db.cars.find({
+  $nor: [{ maker: "Tata" }, { color: "white" }]
+});
+
+//--------------------------------------------
+// 🟢 7️⃣ Array Queries
+//--------------------------------------------
+
+// 👉 Exact array match karne ke liye
+db.cars.find({ features: ["ABS", "Apple CarPlay"] });
+
+// 👉 Array me dono elements hone chahiye (order matter nahi)
+db.cars.find({ features: { $all: ["ABS", "Apple CarPlay"] } });
+
+// 👉 Array me koi ek element match kare
+db.cars.find({ features: "ABS" });
+
+// 👉 Array ke element count karne ke liye
+db.cars.find({ features: { $size: 3 } });
+
+//--------------------------------------------
+// 🟡 8️⃣ Sorting aur Limiting
+//--------------------------------------------
+
+// 👉 Documents ko maker ke basis pe ascending sort karne ke liye
+db.cars.find().sort({ maker: 1 });
+
+// 👉 Descending sort (model ke basis pe)
+db.cars.find().sort({ model: -1 });
+
+// 👉 Sirf pehle 2 documents show karne ke liye
+db.cars.find().limit(2);
+
+//--------------------------------------------
+// 🔵 9️⃣ Exists aur Type Operators
+//--------------------------------------------
+
+// 👉 Field exist karta hai ya nahi
+db.cars.find({ alloy: { $exists: true } });
+
+// 👉 Field specific type ka hai ya nahi
+db.cars.find({ airbags: { $type: "int" } });
+
+//--------------------------------------------
+// 🟣 🔟 Text aur Pattern Matching (Regular Expressions)
+//--------------------------------------------
+
+// 👉 Model name me “a” include ho
+db.cars.find({ model: { $regex: /a/i } });
+
+// 👉 Maker exactly “Tata” ho (case-insensitive)
+db.cars.find({ maker: { $regex: /^tata$/i } });
+
+//--------------------------------------------
+// ⚪ 11️⃣ Counting aur Distinct
+//--------------------------------------------
+
+// 👉 Total documents count karne ke liye
+db.cars.countDocuments();
+
+// 👉 Unique maker names find karne ke liye
+db.cars.distinct("maker");
+
+//--------------------------------------------
+// 🟢 12️⃣ Aggregation ka simple example
+//--------------------------------------------
+
+// 👉 Total cars count by maker
+db.cars.aggregate([
+  { $group: { _id: "$maker", totalCars: { $sum: 1 } } }
+]);
+
+
+//-----------------------------------------------------------
+// 🟢 Query: Array ki length (size) check karne ke liye
+//-----------------------------------------------------------
+
+// 👉 Ye query un documents ko find karegi jinke "features" array me
+// exactly 3 elements (items) present hain.
+// Agar kisi document me "features" ke andar 3 hi values hain
+// to wo document output me aayega.
+
+db.cars.find({ features: { $size: 3 } });
+features: [ "ABS", "Apple CarPlay", "Airbags" ]
+
+
+// 👉 Array me dono elements "ABS" aur "Apple CarPlay" hone chahiye
+db.cars.find({ features: { $all: ["ABS", "Apple CarPlay"] } });
+
+
+// 👉 Sirf "model" field show karega (without _id)
+db.cars.find({}, { model: 1, _id: 0 });
+
+// 👉 Sirf "model" field show karega aur models ko ascending order me sort karega (A–Z)
+db.cars.find({}, { model: 1, _id: 0 }).sort({ model: 1 });
+
+// 👉 "maker" aur "model" dono show karega aur model ke basis par ascending sort karega
+db.cars.find({}, { maker: 1, model: 1, _id: 0 }).sort({ model: 1 });
+
+
+
+//------------------------------------------------------------
+// 👉 Unique model names group karne ke liye (without count)
+db.cars.aggregate([{ $group: { _id: "$model" } }]);
+
+//------------------------------------------------------------
+// 👉 Har model ka total count (kitne documents hain har model ke)
+db.cars.aggregate([{ $group: { _id: "$model", totalsum: { $sum: 1 } } }]);
+
+//------------------------------------------------------------
+// 👉 Har maker ke price ka average nikalne ke liye
+db.cars.aggregate([{ $group: { _id: "$maker", average: { $avg: "$price" } } }]);
+
+//------------------------------------------------------------
+// 👉 Sirf un cars ko filter karne ke liye jinke maker "Tata" aur engine.cc > 1200 hai
+db.cars.aggregate([{ $match: { maker: "Tata", "engine.cc": { $gt: 1200 } } }]);
+
+//------------------------------------------------------------
+// 👉 Maker "Tata" wali cars ka total count nikalne ke liye
+db.cars.aggregate([{ $match: { maker: "Tata" } }, { $count: "totalcars" }]);
+
+//------------------------------------------------------------
+// 👉 Maker "Tata" ki cars ko fuel type ke basis par group karke count karne ke liye
+db.cars.aggregate([
+  { $match: { maker: "Tata" } },
+  { $group: { _id: "$fuel_type", totalcars: { $sum: 1 } } }
+]);
+
+
+//------------------------------------------------------------
+// 👉 Maker "Tata" wali cars me sirf fuel_type aur sunroof fields dikhane ke liye
+db.cars.aggregate([
+  { $match: { maker: "Tata" } },
+  { $project: { _id: 0, fuel_type: 1, sunroof: 1 } }
+]);
+
+//------------------------------------------------------------
+// 👉 Maker ke basis par sabhi cars ka count nikalne ke liye (auto group + count)
+db.cars.aggregate([{ $sortByCount: "$maker" }]);  
+
+// 👉 Har car ke fuel_type me "Dies" word match karke true/false return karega
+db.cars.aggregate([
+  {
+    $project: {
+      _id: 0,
+      model: 1,
+      is_diesel: {
+        $regexMatch: { input: "$fuel_type", regex: "Dies" }
+      }
+    }
+  }
+]);
+
+
+// filet data by using if else condition with aggregare..
+s> db.cars.aggregate([{$project:{_id:0,maker:1,model:1, fuel_cat:{$cond:{if:{$eq:["$fuel_type","Petrol"]},then:"Petrol car", else:"Non petrol car"}}}}])
+
+
+// lookup ka use karke hm join ki tarah operation kar sakte hai kisi 2 table se data nikal skte hai jaise user aur oder
+store_db> db.user.aggregate([{"$lookup":{"from":"order","localField":"_id","foreignField":"user_id","as":"users_orders"}}])
