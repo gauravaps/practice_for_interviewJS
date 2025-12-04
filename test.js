@@ -812,8 +812,71 @@ function checkPlendrom(val) {
 }
 console.log(checkPlendrom(str));
 
+// count frequeny..
+function countFrequency(str) {
+  let obj = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!obj[str[i]]) {
+      obj[str[i]] = 0;
+    }
+    obj[str[i]] += 1;
+  }
+  return obj;
+}
+console.log(countFrequency("rgaurav"));
+
+// check if the given string is snsgrsm and check key and value should be same length frequency..
+function isAnagram(str1, str2) {
+  let obj = {};
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  for (let i = 0; i < str1.length; i++) {
+    if (!obj[str1[i]]) {
+      obj[str1[i]] = 0;
+    }
+    obj[str1[i]] += 1;
+  }
+  for (let j = 0; j < str2.length; j++) {
+    if (!obj[str2[j]]) {
+      return false;
+    }
+  }
+  let obj1 = {};
+  for (let k = 0; k < str2.length; k++) {
+    if (!obj1[str2[k]]) {
+      obj1[str2[k]] = 0;
+    }
+    obj1[str2[k]] += 1;
+  }
+  for (let key in obj) {
+    if (obj[key] !== obj1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(isAnagram("gaurav", "ravgu"));
 
 
+// find first non repeated character..
+function firtstNomRepeatedCharacter(str) {
+  let obj = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!obj[str[i]]) {
+      obj[str[i]] = 0;
+    }
+    obj[str[i]] += 1;
+  }
+  for (let key in obj) {
+    if (obj[key] === 1) {
+      console.log(key);
+      break;
+    }
+  }
+}
+
+firtstNomRepeatedCharacter("aabbcddecff");
 
 
 

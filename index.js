@@ -1,11 +1,18 @@
-//checking palendrom number or string
-let str = "mam";
-function checkPlendrom(val) {
-  let reverseStr = "";
-  for (let i = val.length - 1; i >= 0; i--) {
-    reverseStr += val[i];
+// find first non repeated character..
+function firtstNomRepeatedCharacter(str) {
+  let obj = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!obj[str[i]]) {
+      obj[str[i]] = 0;
+    }
+    obj[str[i]] += 1;
   }
-  return reverseStr === val;
+  for (let key in obj) {
+    if (obj[key] === 1) {
+      console.log(key);
+      break;
+    }
+  }
 }
-console.log(checkPlendrom(str));
 
+firtstNomRepeatedCharacter("aabbcddecff");
