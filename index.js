@@ -1,18 +1,12 @@
-// find first non repeated character..
-function firtstNomRepeatedCharacter(str) {
-  let obj = {};
-  for (let i = 0; i < str.length; i++) {
-    if (!obj[str[i]]) {
-      obj[str[i]] = 0;
-    }
-    obj[str[i]] += 1;
-  }
-  for (let key in obj) {
-    if (obj[key] === 1) {
-      console.log(key);
-      break;
-    }
+//find the longest word in a sentence
+let str = "my rewamdhya name gaurav";
+let splitStr = str.split(" ");
+let newStrLength = "";
+for (let i = 0; i < splitStr.length; i++) {
+  if (splitStr[i].length > newStrLength.length) {
+    newStrLength = splitStr[i];
   }
 }
+console.log(newStrLength);    
 
-firtstNomRepeatedCharacter("aabbcddecff");
+

@@ -872,11 +872,63 @@ function firtstNomRepeatedCharacter(str) {
     if (obj[key] === 1) {
       console.log(key);
       break;
+    }}}
+firtstNomRepeatedCharacter("aabbcddecff");
+
+// Remove duplicate sring..
+function removeDuplicateChar(str) {
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    if (newStr.indexOf(str[i]) === -1) {
+      newStr += str[i];
     }
   }
+  return newStr;
 }
+console.log(removeDuplicateChar("programming"));
 
-firtstNomRepeatedCharacter("aabbcddecff");
+// check if a string contains only alphabets..
+function checkAlfabet(str) {
+  for (let i = 0; i < str.length; i++) {
+    let charCode = str.charCodeAt(i);
+    console.log( str[i],'=' ,charCode);
+    if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122))) {
+      return false;
+    }   }
+  return true;
+}
+console.log(checkAlfabet("gaurav123")); 
+
+// check if a string contains only alphabets..
+let val ='gaurav123';
+for(let i=0; i<val.length; i++){
+  if(val[i] >=0){
+    console.log(val[i]);
+    }}
+
+//Reverse only the world in a sentance
+let str = "i evol aidni";
+let splitStr = str.split(" ");
+let reverseorder = "";
+for (let i = 0; i < splitStr.length; i++) {
+  for (let j = splitStr[i].length - 1; j >= 0; j--) {
+    reverseorder += splitStr[i][j];
+  }
+  reverseorder += " ";
+}
+console.log(reverseorder.trim());
+//output: i love india
+
+//find the longest word in a sentence
+let str = "my rewamdhya name gaurav";
+let splitStr = str.split(" ");
+let newStrLength = "";
+for (let i = 0; i < splitStr.length; i++) {
+  if (splitStr[i].length > newStrLength.length) {
+    newStrLength = splitStr[i];
+  }
+}
+console.log(newStrLength);
 
 
 
