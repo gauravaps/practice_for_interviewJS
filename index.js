@@ -1,12 +1,19 @@
-//find the longest word in a sentence
-let str = "my rewamdhya name gaurav";
-let splitStr = str.split(" ");
-let newStrLength = "";
-for (let i = 0; i < splitStr.length; i++) {
-  if (splitStr[i].length > newStrLength.length) {
-    newStrLength = splitStr[i];
-  }
-}
-console.log(newStrLength);    
+// check if string is a  rotation substring of another
+let str = "hellothere";
+str = str+str
+let str1 = "the";
+let flag = false;
+for (let i = 0; i < str.length; i++) {
+  flag = true;
+for (let j = 0; j < str1.length; j++) {
+    if (str[i + j] !== str1[j]) {
+      flag = false;
+      break;
+    }  }
 
-
+  if (flag) {
+    flag = true;
+    
+    break;
+  }}
+console.log(flag);

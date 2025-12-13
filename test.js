@@ -930,6 +930,124 @@ for (let i = 0; i < splitStr.length; i++) {
 }
 console.log(newStrLength);
 
+//count the number of the words in a sentence without using split method..
+let str = "my rewamdhya name gaurav";
+let newStrLength = 0;
+for (let i = 0; i <str.length; i++) {
+    if (str[i] === " ") {
+        newStrLength++;
+    }
+}console.log(newStrLength + 1); 
+
+//find all substring of a string output= a,ab,abc,b,bc ,c
+let str = "abc";
+for (let i = 0; i < str.length; i++) {
+  for (j = i; j < str.length; j++) {
+    let substring = str.slice(i, j+1 );
+    console.log(substring);
+  }
+}
+
+//find max two value and calculate the product..
+let arr =[1,2,3,4,5,6];
+let sorted=arr.sort((a,b) => b-a).slice(0,2).reduce((acc,curr) => acc*curr);
+console.log(sorted);
+
+//merge the object
+let obj1 ={name:"gaurav",age:30};
+let obj2={name:"saurav",age:35}
+let mergingObj ={...obj1,...obj2};
+console.log(mergingObj);
+//output : { name: 'saurav', age: 35 }
+//In the above code, the properties of obj2 will overwrite the properties of obj1 because they have the same keys. Hence, the final merged object will have the values from obj2.
+//if we want to keep both the objects then we can do like this
+let mergingObj2 ={...obj1,...obj2,originalName:obj1.name,originalAge:obj1.age};
+console.log(mergingObj2);
+//output : { name: 'saurav', age: 35, originalName: 'gaurav', originalAge: 30 }
+
+//print the object's name included with vowels.
+let obj =[
+    {name:'gaurav',roll:25,},
+    {name:"saurav",roll:27,},
+    {name:'th',roll:15},]
+
+for(let i=0; i<obj.length; i++){
+if(obj[i].name.includes('a' || 'e' || 'o' || 'i' || 'u')){
+    console.log(obj[i]);
+    }}
+
+// check if string is a substring of another
+let str = "hellothere";
+let str1 = "there";
+let flag = true;
+console.log(str.includes(str1));
+
+for (let i = 0; i < str1.length; i++) {
+  if (str.indexOf(str1[i]) === -1) {
+    flag = false;
+    break;
+  }}
+console.log(flag);
+
+// check if string is a substring of another
+let str = "hthellothere";
+let str1 = "there";
+let newstr = "";
+let flag = true;
+for (let i = 0; i < str.length; i++) {
+  if (str[i] === str1[0]) {
+    for (let j = 0; j < str1.length; j++) {
+      newstr += str[i + j];
+      console.log(newstr);
+    }
+    if (newstr === str1) {
+      console.log("substring found at index ", newstr);
+      break;
+    } else {
+      newstr = "";
+    }
+  }
+}
+
+// check if string is a substring of another
+let str = "hthellotherefgjdc";
+let str1 = "there";
+let flag = false;
+for (let i = 0; i < str.length; i++) {
+  flag = true;
+for (let j = 0; j < str1.length; j++) {
+    if (str[i + j] !== str1[j]) {
+      flag = false;
+      break;
+    }  }
+
+  if (flag) {
+    flag = true;
+    break;
+  }}
+console.log(flag);
+
+// check if string is a  rotation substring of another
+let str = "hellothere";
+str = str+str
+let str1 = "the";
+let flag = false;
+for (let i = 0; i < str.length; i++) {
+  flag = true;
+for (let j = 0; j < str1.length; j++) {
+    if (str[i + j] !== str1[j]) {
+      flag = false;
+      break;
+    }  }
+
+  if (flag) {
+    flag = true;
+    
+    break;
+  }}
+console.log(flag);
+
+
 
 
 
