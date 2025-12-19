@@ -1047,7 +1047,54 @@ for (let j = 0; j < str1.length; j++) {
   }}
 console.log(flag);
 
+//longest without repeating string in a sentence,
+let str='abcabcdbca'
+let newStr='';
+let longestStr='';
+for(let i=0; i< str.length; i++){
+  let char =i
+  if(!newStr.includes(str[i])){
+    newStr +=str[i]
+  }else {
+    if(newStr.length > longestStr.length){
+      longestStr = newStr
+    }
+    newStr =str[i];
+  }
+  if(newStr.length > longestStr.length){
+    longestStr = newStr;
+  }
+} 
+console.log('longest string without repeating..', longestStr);
 
+//find first unique character..
+function firstUniqueChar(s) {
+  for (let i = 0; i < s.length; i++) {
+    let count = 0;
+for (let j = 0; j < s.length; j++) {
+      if (s[i] === s[j]) {
+        count++;
+      }    }
+   if (count ===1) {
+      
+      return i; 
+    }
+  }
+  return -1;
+}
+ console.log(firstUniqueChar('abcabdd'));
+
+// Count frequency of each words.
+let str = 'i love codind and i love javascript';
+let splitStr = str.split(' ')
+let obj={};
+for(let i=0; i<splitStr.length; i++){
+  if(!obj[splitStr[i]]){
+    obj[splitStr[i]] = 0;
+  }
+  obj[splitStr[i]] +=1;
+  }
+console.log(obj);
 
 
 
