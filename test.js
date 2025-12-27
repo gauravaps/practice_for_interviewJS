@@ -122,7 +122,7 @@ while (num > 0) {
     maxNum = num % 10;
   } else if (minNum > num % 10) {
     minNum = num % 10;
-  }
+   }
 
   num = Math.floor(num / 10);
 }
@@ -1237,6 +1237,104 @@ for(let i=0; i<arr.length; i++){
     }
 }
 console.log(uniqueValue);
+
+//// merge two array without usning spread and concat
+let arr1 = [12, 3, 4, 5];
+let arr2 = [14, 25, 66, 77];
+function mergeTwoArray(arr1, arr2) {
+  let mergeArr = [];
+  for (const i of arr1) {
+    console.log(i);
+   mergeArr.push(i);
+  }
+  for (const j of arr2) {
+    mergeArr.push(j);  }
+return mergeArr;
+}
+console.log(mergeTwoArray(arr1, arr2));
+
+// ffind second largest number..
+let arr1 = [12, 3, 4, 5];
+let arr2= arr1.sort((a,b)=> b-a);
+console.log(arr2.slice(1,2));
+
+// rorate an array to the right by K steps
+let arr1 = [1, 2, 3, 4, 5];
+let k = 2;
+let rightSwipt = [];
+function rightSwiptArray(arr1) {
+  for (let i = arr1.length - 1; i > k; i--) {
+    rightSwipt.push(arr1[i]);
+  }
+for (let i = 0; i <= k; i++) {
+    rightSwipt.push(arr1[i]);
+  }
+  return rightSwipt
+}
+console.log(rightSwiptArray(arr1));
+
+// check if two arrays are equal same order.
+let arr1 = [1, 2, 3, 4, 5];
+let arr2=[1, 2, 3, 4, 5,];
+let flag =true;
+function checkEqualArray (arr1,arr2){
+    if(arr1.length !== arr2.length){
+    console.log('both array must be in same length..');
+    return false;}
+    for(let i=0; i<arr1.length; i++){
+    if(arr1[i] !== arr2[i]){
+        return false
+    }}
+
+    return true;
+}
+console.log(checkEqualArray(arr1,arr2));
+
+// count even and odd number.
+let arr1 = [1, 2, 3, 4, 5];
+let evven=[];
+let odd=[];
+for(let i=0; i<arr1.length; i++){
+    if(arr1[i]%2 ===0){
+        evven.push(arr1[i])
+    }else{
+        odd.push(arr1[i])
+    }}
+console.log(evven, odd);
+
+// find all unique pairs whose sum equal to targer.
+let arr1 = [1, 2, 3, 4, 5];
+let target=6;
+for(i=0; i<arr1.length; i++){
+    for(j=i; j<arr1.length; j++){
+        if(arr1[i] !== arr1[j] && arr1[i] + arr1[j] === target){
+            console.log(arr1[i],arr1[j]);
+                    }}}
+
+// left shift an array by one position.
+let arr1 = [1, 2, 3, 4, 5];
+let shiftArr=[]
+for(i=1; i<arr1.length; i++){
+    shiftArr.push(arr1[i])
+}
+shiftArr.push(arr1[0])
+console.log(shiftArr);
+
+// count how many times an element appears in a array.
+let arr1 = [1, 2,4,3,5,4,4];
+let repeated =4;
+count =0;
+for(let i=0; i<arr1.length; i++){
+    if(arr1[i] === repeated){
+        count +=1
+    }}
+    console.log(count);
+
+
+
+
+
+
 
 
 
