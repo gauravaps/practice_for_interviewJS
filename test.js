@@ -1096,6 +1096,149 @@ for(let i=0; i<splitStr.length; i++){
   }
 console.log(obj);
 
+// check if a string is a pangram.
+let str='the quick brown fox jumps over the lazy dog';
+function isPangram(str) {
+    str = str.toLowerCase();  
+    for (let i = 0; i < 26; i++) {
+        let char = String.fromCharCode(97 + i);
+        if (str.indexOf(char) === -1) {
+            return false;
+        }
+    }
+    return true;
+}
+console.log(isPangram(str));
+//second method by using for loop
+let aToz='abcdefghijklmnopqrstuvwxyz';
+function checkPangram(str){
+    str=str.toLowerCase();
+    for(let i=0;i<aToz.length;i++){
+        if(str.indexOf(aToz[i])===-1){
+            return false;
+        } 
+    }
+    return true;
+}
+console.log(checkPangram(str));
+
+
+ //remove duplicate string
+let str2='this is is a test test string te';
+let arr2=str2.split(' '); 
+let uniqueArr2=[];
+arr2.forEach((item)=>{
+    if(!uniqueArr2.includes(item)){ 
+        uniqueArr2.push(item);
+    }
+});
+console.log(uniqueArr2.join(' '));
+// second method
+let splitStr = str2.split(' ');
+let uniqueStr=[];
+for(let i=0; i<splitStr.length; i++){
+  if(!uniqueStr.includes(splitStr[i])){
+    uniqueStr.push(splitStr[i])
+  }
+}
+console.log(uniqueStr.join(' '));
+
+
+
+function threeSum(nums) {
+
+    nums.sort((a, b) => a - b);   
+    let result = [];
+
+    for (let i = 0; i < nums.length - 2; i++) {
+
+      if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+      let left = i + 1;
+      let right = nums.length - 1;
+
+      while (left < right) {
+        let sum = nums[i] + nums[left] + nums[right];
+
+        if (sum === 0) {
+          result.push([nums[i], nums[left], nums[right]]);
+
+          while (left < right && nums[left] === nums[left + 1]) left++;
+          while (left < right && nums[right] === nums[right - 1]) right--;
+
+          left++;
+          right--;
+        }
+        else if (sum < 0) {
+          left++;
+        }
+        else {
+          right--;
+        }
+      }
+    }
+
+    return result;
+};
+
+export { threeSum };
+
+//find the  min value
+let arr =[ 10,25,35,5, 30];
+let min = arr[0];
+for(let i=0; i<arr.length; i++){
+    if(arr[i]<min){
+        min=arr[i];
+    }
+}
+console.log(min);
+//Reverse an Array with two pointer method.
+let arr = [10, 25, 35, 5, 30];
+let p1 = 0;
+let p2 = arr.length - 1;
+while (p1 < p2) {
+  let temp = arr[p1];
+  arr[p1] = arr[p2];
+  arr[p2] = temp;
+
+  p1++;
+  p2--;
+}
+console.log(arr);
+
+//check if array si sorted or not
+let arr = [1, 2, 6, 3, 4, 5];
+let flag = true;
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] > arr[i + 1]) {
+    flag = false;
+    break;
+  }
+}
+console.log(flag);
+
+//check if array is decending order
+let arr = [5,4,3,2,1];
+let flag = true;
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] < arr[i + 1]) {
+    flag = false;
+    break;
+  }
+}
+console.log(flag);
+
+//find non repeated value from array..
+let arr = [5,4,3,2,1,1,5,3,2,6,7]; //answer=4,6,7
+let uniqueValue =[];
+for(let i=0; i<arr.length; i++){
+    if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])){
+         uniqueValue.push(arr[i]);
+    }
+}
+console.log(uniqueValue);
+
+
 
 
 

@@ -1,12 +1,16 @@
-// Count frequency of each words.
-let str = 'i love codind and i love javascript';
-let splitStr = str.split(' ')
-let obj={};
-for(let i=0; i<splitStr.length; i++){
-  if(!obj[splitStr[i]]){
-    obj[splitStr[i]] = 0;
-  }
-  obj[splitStr[i]] +=1;
-  }
-console.log(obj);
+const checkPromise = new Promise((resolve ,reject)=>{
+    let result = 10;
+    if(result ===11){
+        resolve('passed..')
+    }else{
+        reject('failed..')
+    }
+})
 
+checkPromise.then(message =>{
+    console.log(message);
+    
+}).catch(message =>{
+    console.log(message);
+    
+})
